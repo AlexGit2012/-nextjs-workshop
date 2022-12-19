@@ -1,6 +1,9 @@
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 
-const httpLink = new HttpLink({ uri: "http://localhost:5002/graphql" });
+const localUri = "http://localhost:5002/graphql";
+const remoteUri = "https://nextjs-backend-production.up.railway.app/graphql";
+
+const httpLink = new HttpLink({ uri: remoteUri });
 
 export const client = new ApolloClient({
   link: httpLink,
