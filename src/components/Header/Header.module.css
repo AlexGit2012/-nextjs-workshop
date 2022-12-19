@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background: black;
+}
+
+.header__container {
+    margin: 0px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 100px)
+}

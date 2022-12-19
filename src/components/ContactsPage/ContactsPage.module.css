@@ -1,0 +1,37 @@
+.contacts {
+    display: flex;
+    justify-content: center;
+}
+
+.contacts__container {
+    margin: 0 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 800px;
+    width: calc(100% - 100px);
+}
+
+.contacts__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(100% - 100px);
+}
+
+.contacts__header {
+    font-family: "Open Sans",sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.contacts__paragraph {
+    margin-bottom: 100px;
+    width: 300px;
+    font-size: 16px;
+}
+
+.contacts__image {
+    layout: responsive
+}

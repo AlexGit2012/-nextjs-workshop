@@ -1,0 +1,23 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100px;
+    background: black;
+}
+
+.footer__container {
+    margin: 40px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__rights {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    color: #F7F7F7;
+}

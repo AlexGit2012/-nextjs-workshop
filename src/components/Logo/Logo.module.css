@@ -1,0 +1,14 @@
+.logo {
+    text-decoration: none;
+    width: 220px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo__title {
+    font-family: Roboto, sans-serif;
+    color: #F7F7F7;
+    font-size: 32px;
+}

@@ -1,0 +1,10 @@
+.animalList {
+    display: flex;
+    justify-content: center;
+}
+
+.animalList__container {
+    width: calc(100% - 200px);
+    display: flex;
+    justify-content: space-between;
+}

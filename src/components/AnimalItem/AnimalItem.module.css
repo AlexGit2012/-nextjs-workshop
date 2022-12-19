@@ -1,0 +1,25 @@
+.animalItem {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid black;
+    border-radius: 3px;
+    height: 400px;
+}
+
+.animalItem__link {
+    text-decoration: none;
+    color: black;
+}
+
+.animalItem__image {
+    margin: 20px;
+}
+
+.animalItem__description {
+    width: 300px;
+    text-align: justify;
+}
