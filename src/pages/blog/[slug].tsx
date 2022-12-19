@@ -5,6 +5,7 @@ import { client } from '../../apollo-client/apollo-client'
 import { GetServerSidePropsContext } from 'next'
 import { AnimalItemType } from '../../components/AnimalItem/AnimalItem'
 import { createGetServerSideProps } from '../../utils/createGetServerSideProps'
+import AnimalItemHeader from '../../components/AnimalItemHeader/AnimalItemHeader'
 
 export const getServerSideProps = createGetServerSideProps(
     async (ctx: GetServerSidePropsContext) => {
@@ -38,6 +39,7 @@ type Props = {
 const Slug = ({ data: { animal } }: Props) => {
     return (
         <div>
+            <AnimalItemHeader text={'Server side props'} />
             <AnimalPage animal={animal} />
         </div>
     )

@@ -1,29 +1,62 @@
-import React from "react";
-import { useRouter } from "next/router";
-import { useQuery } from "@apollo/client";
-import { GET_ANIMAL } from "../../queries/queries";
-import AnimalPage from "../../components/AnimalPage/AnimalPage";
+import React from 'react'
+import AnimalPage from '../../components/AnimalPage/AnimalPage'
+import { AnimalItemType } from '../../components/AnimalItem/AnimalItem'
+import { GetStaticPathsResult, GetStaticPropsContext } from 'next'
+import { client } from '../../apollo-client/apollo-client'
+import { GET_ALL_ANIMALS, GET_ANIMAL } from '../../queries/queries'
+import AnimalItemHeader from '../../components/AnimalItemHeader/AnimalItemHeader'
 
-const Slug = () => {
-  const router = useRouter();
+export const getStaticProps = async (ctx: GetStaticPropsContext) => {
+    const { data } = await client.query({
+        query: GET_ANIMAL,
+        variables: {
+            title: ctx.params?.slug,
+        },
+    })
 
-  const { loading, data } = useQuery(GET_ANIMAL, {
-    variables: {
-      title: router?.query.slug,
-    },
-  });
+    if (!data.animal) {
+        return {
+            notFound: true,
+        }
+    }
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+    return {
+        props: {
+            data,
+        },
+    }
+}
 
-  const { animal } = data;
+export const getStaticPaths = async (): Promise<GetStaticPathsResult> => {
+    const { data } = await client.query({
+        query: GET_ALL_ANIMALS,
+    })
 
-  return (
-    <>
-      <AnimalPage animal={animal} />
-    </>
-  );
-};
+    const { animals } = data
 
-export default Slug;
+    return {
+        fallback: false,
+        paths: animals.map(({ title }: AnimalItemType) => ({
+            params: {
+                slug: title,
+            },
+        })),
+    }
+}
+
+type Props = {
+    data: {
+        animal: AnimalItemType
+    }
+}
+
+const Slug = ({ data: { animal } }: Props) => {
+    return (
+        <>
+            <AnimalItemHeader text={'Static props'} />
+            <AnimalPage animal={animal} />
+        </>
+    )
+}
+
+export default Slug
