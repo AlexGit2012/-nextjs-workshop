@@ -3,6 +3,7 @@ import wildlifeLogoImg from "../../../public/assets/images/wildlife-logo.png";
 import Image from "next/image";
 import styles from "./Logo.module.css";
 import Link from "next/link";
+import {Routes} from "../../constants/routes";
 
 type Props = {
   isLogoShow?: boolean;
@@ -10,7 +11,7 @@ type Props = {
 
 const Logo = ({ isLogoShow = true }: Props) => {
   return (
-    <Link href="/" passHref legacyBehavior>
+    <Link href={Routes.base} passHref legacyBehavior>
       <a className={styles.logo}>
         {isLogoShow && <Image src={wildlifeLogoImg} alt="logo" />}
         <div className={styles.logo__title}>WILDLIFE</div>

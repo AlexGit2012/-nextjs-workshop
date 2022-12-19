@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./AnimalItem.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import {Routes} from "../../constants/routes";
 
 export type AnimalItemType = {
   title: string;
@@ -16,7 +17,7 @@ type Props = {
 const AnimalItem = ({ animal }: Props) => {
   const { title, description, image } = animal;
   return (
-    <Link href={`/blog/${title}`} passHref className={styles.animalItem__link}>
+    <Link href={Routes.blog + "/" + title} passHref className={styles.animalItem__link}>
       <div className={styles.animalItem}>
         <Image
           src={image}

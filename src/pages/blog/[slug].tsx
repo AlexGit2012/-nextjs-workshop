@@ -1,29 +1,46 @@
-import React from "react";
-import { useRouter } from "next/router";
-import { useQuery } from "@apollo/client";
-import { GET_ANIMAL } from "../../queries/queries";
-import AnimalPage from "../../components/AnimalPage/AnimalPage";
+import React from 'react'
+import { GET_ANIMAL } from '../../queries/queries'
+import AnimalPage from '../../components/AnimalPage/AnimalPage'
+import { client } from '../../apollo-client/apollo-client'
+import { GetServerSidePropsContext } from 'next'
+import { AnimalItemType } from '../../components/AnimalItem/AnimalItem'
+import { createGetServerSideProps } from '../../utils/createGetServerSideProps'
 
-const Slug = () => {
-  const router = useRouter();
+export const getServerSideProps = createGetServerSideProps(
+    async (ctx: GetServerSidePropsContext) => {
+        const { data } = await client.query({
+            query: GET_ANIMAL,
+            variables: {
+                title: ctx.query.slug,
+            },
+        })
 
-  const { loading, data } = useQuery(GET_ANIMAL, {
-    variables: {
-      title: router?.query.slug,
-    },
-  });
+        if (!data.animal) {
+            return {
+                notFound: true,
+            }
+        }
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+        return {
+            props: {
+                data,
+            },
+        }
+    }
+)
 
-  const { animal } = data;
+type Props = {
+    data: {
+        animal: AnimalItemType
+    }
+}
 
-  return (
-    <>
-      <AnimalPage animal={animal} />
-    </>
-  );
-};
+const Slug = ({ data: { animal } }: Props) => {
+    return (
+        <div>
+            <AnimalPage animal={animal} />
+        </div>
+    )
+}
 
-export default Slug;
+export default Slug
