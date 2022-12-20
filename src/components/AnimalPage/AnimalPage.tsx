@@ -19,6 +19,7 @@ const AnimalPage = ({ animal }: Props) => {
                     width={400}
                     height={200}
                     layout={'responsive'}
+                    priority
                 />
                 <span className={styles.animal__description}>
                     {description}
