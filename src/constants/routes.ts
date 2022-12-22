@@ -4,4 +4,6 @@ export const Routes = {
     blog: '/blog',
     staticBlog: '/static-blog',
     somethingWrong: '/something-wrong',
+    signIn: '/sign-in',
+    dashboard: '/dashboard',
 }

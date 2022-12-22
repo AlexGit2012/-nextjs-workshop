@@ -1,15 +1,15 @@
-import React from "react";
-import CustomLink from "../CustomLink/CustomLink";
-import styles from "./FooterMenu.module.css";
+import React from 'react'
+import CustomLink from '../shared/CustomLink/CustomLink'
+import styles from './FooterMenu.module.css'
 
 const FooterMenu = () => {
-  return (
-    <div className={styles.footerMenu}>
-      <CustomLink name={"Articles"} />
-      <CustomLink name={"About us"} />
-      <CustomLink name={"Learn more"} />
-    </div>
-  );
-};
+    return (
+        <div className={styles.footerMenu}>
+            <CustomLink name={'Articles'} />
+            <CustomLink name={'About us'} />
+            <CustomLink name={'Learn more'} />
+        </div>
+    )
+}
 
-export default FooterMenu;
+export default FooterMenu

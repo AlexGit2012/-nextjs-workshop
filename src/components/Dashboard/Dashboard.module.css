@@ -1,0 +1,14 @@
+.dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard__greetings {
+    font-family: Open Sans, sans-serif;
+    font-size: 12px;
+}
+
+.dashboard__container {
+    width: 500px;
+}

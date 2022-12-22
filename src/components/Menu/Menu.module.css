@@ -1,5 +1,28 @@
 .menu {
     display: flex;
     justify-content: space-between;
-    width: 350px;
+    align-items: center;
+}
+
+.menu_signOut {
+    border-radius: 3px;
+    border: none;
+    background-color: white;
+    color: black;
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+
+    font-family: Open Sans, sans-serif;
+    font-size: 18px;
+}
+
+.menu_signOut:hover {
+    background-color: #ef6802;
+    color: #F7F7F7;
+}
+
+.menu_signOut:active {
+    background-color: #F7F7F7;
+    color: black;
 }

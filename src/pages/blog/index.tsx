@@ -11,10 +11,11 @@ export const getServerSideProps = createGetServerSideProps(
     async (ctx: GetServerSidePropsContext) => {
         const { data } = await client.query({
             query: GET_ALL_ANIMALS,
+            fetchPolicy: 'network-only',
         })
         return {
             props: {
-                data,
+                data: data || null,
             },
         }
     }
